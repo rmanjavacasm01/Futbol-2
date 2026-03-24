@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        div {
+            box-shadow: 3px 3px 3px black;
+        }
+        img { width: 200px;}
+
+        #contenedor { 
+            background-color: burlywood;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+
+        }
+        #contenedor div{
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        table#tabla-jugadores,td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jugadores de Futbol</h1>
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1169436715&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/josedeaguilar-music" title="José de Aguilar" target="_blank" style="color: #cccccc; text-decoration: none;">José de Aguilar</a> · <a href="https://soundcloud.com/josedeaguilar-music/himno-oficial-del-atletico-de" title="Himno Oficial del Atlético de Madrid" target="_blank" style="color: #cccccc; text-decoration: none;">Himno Oficial del Atlético de Madrid</a></div>
+        <div id="contenedor">
+
+        </div>
+        <table id="tabla-jugadores">
+
+        </table>
+<script>
+
+    let jugadores = [{
+
+    nombre: "ViniciusJR",
+    edad: 25,
+    ficha:40000000,
+    foto: "vini.jpeg"
+
+
+   },{
+
+    nombre: "Llorente",
+    edad: 31,
+    ficha: 20000000,
+    foto: "llorente.jpeg"
+
+   },{
+
+    nombre: "Griezmann",
+    edad: 34,
+    ficha: 30000000,
+    foto: "griezman.jpeg"
+
+   },{
+
+    nombre: "Lamine Va mal",
+    edad: 19,
+    ficha: 70000000,
+    foto: "lamine.jpg"
+
+   }
+]
+for (let i=0;i<jugadores.length;i++ ) {
+    //jugador = jugadores [i];
+    nombreJugador = jugadores[i].nombre;
+    edadJugador = jugadores[i].edad;
+    fichaJugador = jugadores[i].ficha;
+    fotoJugador = jugadores[i].foto;
+
+    nuevaCaja = document.createElement("div");
+    nuevoH1=document.createElement("h1");
+    nuevoH1.innerHTML = nombreJugador;
+    nuevaCaja.appendChild(nuevoH1);
+
+    nuevaFoto = document.createElement("img");
+    nuevaFoto.src = fotoJugador;
+    nuevaCaja.appendChild(nuevaFoto);
+
+
+    //creo un h2 para contener la edad
+    nuevoH2=document.createElement("h2");
+    nuevoH2.innerHTML = "Edad: "+ edadJugador;
+    nuevaCaja.appendChild(nuevoH2);
+
+    //finalmente agregamos la caja al contenedor
+    document.getElementById("contenedor").appendChild(nuevaCaja);
+
+    //creo un h3 para contener la ficha
+    nuevoH3=document.createElement("h3");
+    nuevoH3.innerHTML = "Ficha: "+ fichaJugador;
+    nuevaCaja.appendChild(nuevoH3);
+
+    //finalmente agregamos la ficha al contenedor
+    document.getElementById("contenedor").appendChild(nuevaCaja);
+    
+}
+// recorro todos los jugadores y creo una fila para cada  uno
+for ( jugador of jugadores){
+    let nuevoTR = document.createElement("tr");
+    //creo un td para el nombre y lo agrego al tr
+    let tdNombre = document.createElement("td");
+    tdNombre.innerHTML = jugador.nombre;
+    nuevoTR.appendChild(tdNombre);
+    //creo un td para el nombre y lo agrego al tr
+
+    let tdEdad = document.createElement("td");
+    tdEdad.innerHTML = jugador.edad;
+    nuevoTR.appendChild(tdEdad);
+
+    let tdFicha = document.createElement("td");
+    tdFicha.innerHTML = jugador.ficha;
+    nuevoTR.appendChild(tdFicha);
+
+    tdFoto = document.createElement("td");
+    let nuevaFoto = document.createElement("img");
+    nuevaFoto.src = jugador.foto;
+    tdFoto.appendChild(nuevaFoto);
+
+    nuevoTR.appendChild(tdFoto);
+
+    //añado la tabla
+    document.getElementById("tabla-jugadores").appendChild(nuevoTR);
+    
+}
+
+</script>                                                                                                                  
+</body>
+</html>
